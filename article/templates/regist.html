@@ -1,0 +1,5 @@
+<form method='post' action='/checkfb/'>
+	{% csrf_token %}
+	<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Regist with Facebook</a>
+</form>
+

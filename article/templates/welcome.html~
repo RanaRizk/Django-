@@ -1,0 +1,4 @@
+ Hello {{name}} Welcome in our site welcome page  <br>
+<form method='post' action='/logout/'>
+<a href='/logout/'>Logout</a>
+</form>

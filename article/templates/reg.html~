@@ -1,0 +1,82 @@
+<html>
+<body onload="clear()">
+
+<form method='post' action='/save/'>
+{% csrf_token %}
+First name:<br>
+<input id ="name1" type="text" name="firstname" onblur="myFunction()" >
+<br>
+E-mail:<br>
+<input id = "mail" type="email" name="E-mail" onblur="myFunction()" >
+<br>
+password:<br>
+<input id="pass1" type="password" name="password" onblur="myFunction()">    
+<label id="l1" style="color:red" for="lab1"></label
+<br>
+<br>
+re-enter password:<br>
+<input id ="pass2" type="password" name="password2" onblur="myFunction()">  
+<label id="l2"  for="lab2"></label>
+<br> 
+<br>
+<input id="sub" type="submit" value="Submit">
+</form> 
+
+<form method='post' action='/checkfb/'>
+	{% csrf_token %}
+	<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Regist with Facebook</a>
+</form>
+
+<script>
+
+submit=document.getElementById("sub");
+submit.disabled=true;
+pass1=document.getElementById("pass1");
+pass2=document.getElementById("pass2");
+name1=document.getElementById("name1");
+var parag1 = document.getElementById("l1");
+var parag2 = document.getElementById("l2");
+var welcomUser = document.createTextNode("password must be at least 6 characters");
+
+//remove
+//parag1.removeChild(welcomUser);
+
+function myFunction()
+{
+p1=pass1.value;
+p2=pass2.value; 
+p3=name1.value;
+
+
+
+if(p1===p2 && p1 !="" && p3 !="" )
+{
+
+if (p1.length<6 )
+{
+parag1.appendChild(welcomUser);
+}
+else
+{
+
+submit.disabled=false;
+parag1.removeChild(welcomUser);
+parag2.removeChild(welcomUser);
+}
+}
+else
+{
+submit.disabled=true;
+}
+}
+function clear()
+{
+document.getElementById('pass1').value="";
+document.getElementById('pass2').value="";
+document.getElementById('name1').value="";
+document.getElementById('mail').value="";
+}
+</script>
+</body>
+</html>
+

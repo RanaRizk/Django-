@@ -1,0 +1,27 @@
+from django.contrib import admin
+from article.models import User_1,Article,TagOnArticle,Comment,LikeByUser
+
+
+class TagOnArticleAdmin(admin.StackedInline):
+	extra=3
+	model=TagOnArticle
+	
+class ArticleAdmin(admin.ModelAdmin):
+	inlines=[TagOnArticleAdmin]
+	list_display=['title','body','pub_date','like','image','published'] 
+	list_filter = ['pub_date','published'] 
+
+class TagOnArticleAdmin(admin.ModelAdmin): 
+	list_display=['articleId','tag'] 
+	list_filter = ['tag'] 
+
+class UserAdmin(admin.ModelAdmin): 
+	list_display=['user_name','password','email','image','logWithFb'] 
+	list_filter = ['logWithFb'] 
+
+admin.site.register(TagOnArticle,TagOnArticleAdmin)
+admin.site.register(Article,ArticleAdmin)
+admin.site.register(User_1,UserAdmin)
+admin.site.register(Comment)
+admin.site.register(LikeByUser)
+

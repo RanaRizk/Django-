@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% load staticfiles %}
+  <title>{% block title %}My Base Templates{% endblock %}</title>
+  <style type="text/css">
+
+    body {
+	text-align: center;
+    }
+
+    #page {
+	height : 100%;
+        width :960px;
+	text-align: left;
+	margin:10px auto 20px auto;
+	background-color:#0c0c0c;
+    }
+
+
+    #all {
+	float : left;
+	width:800px;
+	border:1px solid #f00;	
+	padding: 10px;
+	margin :10px auto;
+}
+
+  </style>
+</head>
+
+<body>
+  <div id="page">
+
+  	<div id="all">
+            {% block all %}{% endblock %}
+
+ 	</div>
+
+   </div>
+</body>
+</html>

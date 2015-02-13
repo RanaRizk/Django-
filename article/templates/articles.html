@@ -1,0 +1,26 @@
+{% extends "all_articles.html" %}
+
+{% block all %}
+
+  {% if articles.count > 0 %}
+
+    {% for article in articles%}
+
+      {% if article.published == 1 %}
+
+          <div>
+               <h2><a href="/article/get/{{article.id}}/">{{ article.title }}</a></h2>
+               <p>{{article.body|lower|truncatewords:"10"}}</p>
+         </div>
+
+      {% endif %}
+
+    {% endfor %}
+
+  {% else %}
+
+    <p>None to show</p>
+
+  {% endif %}
+
+{% endblock%}
